@@ -4,12 +4,9 @@ import com.yicj.study.kafka.constants.CommonConstants;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.kafka.clients.producer.*;
 import org.junit.Test;
-
-import java.util.List;
 import java.util.Properties;
 import java.util.concurrent.Future;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
+ import java.util.stream.IntStream;
 
 @Slf4j
 public class ProducerSampleTest {
