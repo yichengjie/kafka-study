@@ -86,6 +86,29 @@ public class ConsumerSampleTest {
     }
 
 
+    /**
+     * 指定消费topic某一个分区
+     */
+    @Test
+    public void consumerTopicWithPartition(){
+        KafkaConsumer<String, String> consumer = initManualCommitConsumer();
+        //consumer.subscribe(Arrays.asList(TOPIC_NAME));
+        TopicPartition partition = new TopicPartition(TOPIC_NAME, 0) ;
+        consumer.assign(Arrays.asList(partition));
+        while (true) {
+            ConsumerRecords<String, String> records = consumer.poll(Duration.ofMillis(10000));
+            for (ConsumerRecord<String, String> record : records){
+                log.info("=========> partition: {},  offset = {}, key = {}, value = {}",
+                        record.partition(), record.offset(), record.key(), record.value());
+                // 如果失败，则回滚，不要提交offset
+            }
+            // 手动通知offset提交
+            consumer.commitAsync();
+        }
+    }
+
+
+
     private KafkaConsumer<String, String> initManualCommitConsumer(){
         Properties props = new Properties();
         props.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, CommonConstants.BOOTSTRAP_SERVER_ADDRESS);
