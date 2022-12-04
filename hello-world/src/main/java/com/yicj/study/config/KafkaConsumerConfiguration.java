@@ -13,10 +13,7 @@ import org.springframework.kafka.config.KafkaListenerContainerFactory;
 import org.springframework.kafka.core.ConsumerFactory;
 import org.springframework.kafka.core.DefaultKafkaConsumerFactory;
 import org.springframework.kafka.listener.ConcurrentMessageListenerContainer;
-import org.springframework.kafka.listener.ConsumerAwareListenerErrorHandler;
-import org.springframework.kafka.listener.ListenerExecutionFailedException;
-import org.springframework.messaging.Message;
-
+import org.springframework.kafka.listener.ContainerProperties;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -29,10 +26,11 @@ public class KafkaConsumerConfiguration {
         ConcurrentKafkaListenerContainerFactory<String, String> factory = new ConcurrentKafkaListenerContainerFactory<>();
         //设置 consumerFactory
         factory.setConsumerFactory(consumerFactory());
+        factory.getContainerProperties().setAckMode(ContainerProperties.AckMode.MANUAL);
         //设置是否开启批量监听
-        factory.setBatchListener(false);
+        //factory.setBatchListener(false);
         //设置消费者组中的线程数量
-        factory.setConcurrency(1);
+        //factory.setConcurrency(1);
         return factory;
     }
     /**
@@ -65,7 +63,7 @@ public class KafkaConsumerConfiguration {
         //none:只要有一个分区不存在已提交的offset,就抛出异常
         props.put(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, "latest");
         //设置Consumer拦截器
-        props.put(ConsumerConfig.INTERCEPTOR_CLASSES_CONFIG, MyConsumerInterceptor.class.getName());
+        //props.put(ConsumerConfig.INTERCEPTOR_CLASSES_CONFIG, MyConsumerInterceptor.class.getName());
         return new DefaultKafkaConsumerFactory<>(props);
     }
 
@@ -73,15 +71,12 @@ public class KafkaConsumerConfiguration {
      * 消费异常处理器
      * @return
      */
-    @Bean
-    public ConsumerAwareListenerErrorHandler consumerAwareListenerErrorHandler() {
-        return new ConsumerAwareListenerErrorHandler() {
-            @Override
-            public Object handleError(Message<?> message, ListenerExecutionFailedException exception, Consumer<?, ?> consumer) {
-                //打印消费异常的消息和异常信息
-                log.error("consumer failed! message: {}, exceptionMsg: {}, groupId: {}", message, exception.getMessage(), exception.getGroupId());
-                return null;
-            }
-        };
-    }
+//    @Bean
+//    public ConsumerAwareListenerErrorHandler consumerAwareListenerErrorHandler() {
+//        return (message, exception, consumer) -> {
+//            //打印消费异常的消息和异常信息
+//            log.error("consumer failed! message: {}, exceptionMsg: {}, groupId: {}", message, exception.getMessage(), exception.getGroupId());
+//            return null;
+//        };
+//    }
 }

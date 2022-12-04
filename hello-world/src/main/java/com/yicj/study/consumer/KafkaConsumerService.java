@@ -3,6 +3,7 @@ package com.yicj.study.consumer;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.springframework.kafka.annotation.KafkaListener;
+import org.springframework.kafka.support.Acknowledgment;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -13,13 +14,15 @@ public class KafkaConsumerService {
 
     //消费单条消息,topics 可以监听多个topic，如：topics = {"topic1", "topic2"}
     @KafkaListener(id = "consumerSingle", topics = "hello-kafka-test-topic")
-    public void consumerSingle(String message){
+    public void consumerSingle(ConsumerRecord<?, ?> record, Acknowledgment ack){
         log.info("--------------------------------------");
+        String message = (String) record.value();
         if(message.contains("error")){
             throw new RuntimeException("出错！！！！！") ;
         }
         log.info("consumerSingle ===> message : {}", message);
         log.info("--------------------------------------");
+        ack.acknowledge();
     }
 
     //批量消费消息
