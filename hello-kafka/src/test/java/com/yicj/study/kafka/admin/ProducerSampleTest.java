@@ -17,7 +17,7 @@ public class ProducerSampleTest {
     public void producer(){
         Producer<String, String> producer = this.initProducer();
         // 消息对象
-        IntStream.range(0, 9)
+        IntStream.range(0, 100)
                 .forEach(index -> {
                     String key = String.format("key-%s", (index + 1));
                     String value = String.format("hello world [%s]", (index + 1));

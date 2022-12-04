@@ -4,9 +4,7 @@ package com.yicj.study.kafka.admin;
 import com.yicj.study.kafka.constants.CommonConstants;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.kafka.clients.admin.*;
-import org.apache.kafka.common.KafkaFuture;
 import org.junit.Test;
-
 import java.util.*;
 import java.util.concurrent.ExecutionException;
 
