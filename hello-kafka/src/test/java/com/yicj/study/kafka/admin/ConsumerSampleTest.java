@@ -2,15 +2,12 @@ package com.yicj.study.kafka.admin;
 
 import com.yicj.study.kafka.constants.CommonConstants;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.kafka.clients.consumer.ConsumerConfig;
-import org.apache.kafka.clients.consumer.ConsumerRecord;
-import org.apache.kafka.clients.consumer.ConsumerRecords;
-import org.apache.kafka.clients.consumer.KafkaConsumer;
+import org.apache.kafka.clients.consumer.*;
+import org.apache.kafka.common.TopicPartition;
 import org.junit.Test;
 
 import java.time.Duration;
-import java.util.Arrays;
-import java.util.Properties;
+import java.util.*;
 
 @Slf4j
 public class ConsumerSampleTest {
@@ -39,6 +36,9 @@ public class ConsumerSampleTest {
     }
 
 
+    /**
+     * 手动提交
+     */
     @Test
     public void consumerTopic(){
         KafkaConsumer<String, String> consumer = initManualCommitConsumer();
@@ -52,6 +52,36 @@ public class ConsumerSampleTest {
             }
             // 手动通知offset提交
             //consumer.commitAsync();
+        }
+    }
+
+
+    /**
+     * 手动提交每一个partition
+     */
+    @Test
+    public void consumerTopicByPartition(){
+        KafkaConsumer<String, String> consumer = initManualCommitConsumer();
+        consumer.subscribe(Arrays.asList(TOPIC_NAME));
+        while (true) {
+            ConsumerRecords<String, String> records = consumer.poll(Duration.ofMillis(10000));
+            for (TopicPartition partition: records.partitions()){
+                // 从指定的partition中获取记录
+                List<ConsumerRecord<String, String>> partitionRecords = records.records(partition);
+                for (ConsumerRecord<String, String> partitionRecord: partitionRecords){
+                    log.info("=========> partition: {},  offset = {}, key = {}, value = {}",
+                            partitionRecord.partition(), partitionRecord.offset(), partitionRecord.key(), partitionRecord.value());
+                }
+                // 手动提交(获取最后一条消息的offset值)
+                long lastOffset = partitionRecords.get(partitionRecords.size() -1).offset() ;
+                // 单个partition中的offset，并提交
+                Map<TopicPartition, OffsetAndMetadata> offsetAndMetadataMap = new HashMap<>() ;
+                offsetAndMetadataMap.put(partition, new OffsetAndMetadata(lastOffset +1)) ;
+                consumer.commitAsync(offsetAndMetadataMap, (offsets, exception) -> {
+                    log.error("=====> commit async offsets :{} error : ", offsets, exception);
+                });
+                log.info("=======================partition : {}===============================", partition);
+            }
         }
     }
 
