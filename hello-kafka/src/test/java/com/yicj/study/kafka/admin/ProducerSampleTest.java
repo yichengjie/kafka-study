@@ -53,12 +53,12 @@ public class ProducerSampleTest {
         properties.put(ProducerConfig.BATCH_SIZE_CONFIG,"16384");
         properties.put(ProducerConfig.LINGER_MS_CONFIG,"1");
         properties.put(ProducerConfig.BUFFER_MEMORY_CONFIG,"33554432");
-        properties.setProperty(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, "org.apache.kafka.common.serialization.StringSerializer") ;
-        properties.setProperty(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, "org.apache.kafka.common.serialization.StringSerializer") ;
+        properties.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, "org.apache.kafka.common.serialization.StringSerializer") ;
+        properties.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, "org.apache.kafka.common.serialization.StringSerializer") ;
         // 事务配置支持
         properties.put(ProducerConfig.RETRIES_CONFIG, "2") ;
         properties.put(ProducerConfig.TRANSACTIONAL_ID_CONFIG, "hello-transaction-id") ;
-        //
+        // Producer的主对象
         Producer<String, String> producer = new KafkaProducer<>(properties) ;
         producer.initTransactions();
         producer.beginTransaction();
@@ -76,7 +76,7 @@ public class ProducerSampleTest {
             producer.commitTransaction();
         }catch (Exception e){
             //
-            log.error("send transaction message error !!", e);
+            e.printStackTrace();
             // 终止事务
             producer.abortTransaction();
         }finally {
