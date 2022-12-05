@@ -64,12 +64,13 @@ public class ProducerSampleTest {
         producer.beginTransaction();
         try {
             for (int index =0 ; index < 100; index ++){
+                String key = String.format("key-%s", (index + 1));
+                String value = String.format("hello world [%s]", (index + 1));
+                // bad
+                ProducerRecord<String, String> record = new ProducerRecord<>(TOPIC_NAME, key,value);
                 if(index == 8){
                     throw new Exception();
                 }
-                String key = String.format("key-%s", (index + 1));
-                String value = String.format("hello world [%s]", (index + 1));
-                ProducerRecord<String, String> record = new ProducerRecord<>(TOPIC_NAME, key, value);
                 producer.send(record);
             }
             // 提交事务
@@ -104,10 +105,11 @@ public class ProducerSampleTest {
         producer.beginTransaction();
         try{
             // 消息对象 - ProducerRecoder
-            for(int i=0; i<10; i++){
-                String key = "key-"+i;
-                ProducerRecord<String,String> record = new ProducerRecord<>(TOPIC_NAME, key,"value-"+i);
-                if(i == 8){
+            for(int index=0; index<10; index++){
+                String key = String.format("key-%s", (index + 1));
+                String value = String.format("hello world [%s]", (index + 1));
+                ProducerRecord<String,String> record = new ProducerRecord<>(TOPIC_NAME, key, value);
+                if(index == 8){
                     throw new Exception();
                 }
                 producer.send(record);
