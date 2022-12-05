@@ -63,10 +63,10 @@ public class ProducerSampleTest {
         producer.initTransactions();
         producer.beginTransaction();
         try {
-            for(int index = 0; index < 10; index ++){
+            for(int index=0; index<10; index++){
                 String key = String.format("key-%s", (index + 1));
                 String value = String.format("hello world [%s]", (index + 1));
-                ProducerRecord<String, String> record = new ProducerRecord<>(TOPIC_NAME, key, value);
+                ProducerRecord<String,String> record = new ProducerRecord<>(TOPIC_NAME, key, value);
                 if(index == 8){
                     throw new Exception();
                 }
@@ -104,10 +104,10 @@ public class ProducerSampleTest {
         producer.beginTransaction();
         try{
             // 消息对象 - ProducerRecoder
-            for(int index=0; index<10; index++){
+            for(int index = 0; index < 10; index ++){
                 String key = String.format("key-%s", (index + 1));
                 String value = String.format("hello world [%s]", (index + 1));
-                ProducerRecord<String,String> record = new ProducerRecord<>(TOPIC_NAME, key, value);
+                ProducerRecord<String, String> record = new ProducerRecord<>(TOPIC_NAME, key, value);
                 if(index == 8){
                     throw new Exception();
                 }
