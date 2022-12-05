@@ -34,7 +34,6 @@ public class ConsumerSampleTest {
                         record.partition(), record.offset(), record.key(), record.value());
                 System.err.println(format);
             }
-            //Thread.sleep(10000);
         }
     }
 
