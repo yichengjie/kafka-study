@@ -58,7 +58,7 @@ public class ProducerSampleTest {
         // 事务配置支持
         properties.put(ProducerConfig.RETRIES_CONFIG, "2") ;
         properties.put(ProducerConfig.TRANSACTIONAL_ID_CONFIG, "hello-transaction-id") ;
-        // Producer的主对象
+        //
         Producer<String, String> producer = new KafkaProducer<>(properties) ;
         producer.initTransactions();
         producer.beginTransaction();
@@ -68,21 +68,37 @@ public class ProducerSampleTest {
                 String value = String.format("hello world [%s]", (index + 1));
                 ProducerRecord<String, String> record = new ProducerRecord<>(TOPIC_NAME, key, value);
                 if(index == 8){
-                    throw new Exception();
+                    throw new Exception("xxx");
                 }
                 producer.send(record);
             }
             // 提交事务
             producer.commitTransaction();
         }catch (Exception e){
-            //
-            e.printStackTrace();
             // 终止事务
             producer.abortTransaction();
+            //
+            log.error("send transaction message error !!", e);
         }finally {
             producer.close();
         }
     }
+
+    public static void main(String[] args) {
+        try{
+            for(int index=0; index<10; index++){
+                if(index == 8){
+                    throw new Exception("error ");
+                }
+            }
+        }catch (Exception e){
+            log.error("send transaction message error !!", e);
+            log.info("=====================");
+            log.info("=====================");
+            log.info("=====================");
+        }
+    }
+
 
 
     @Test
