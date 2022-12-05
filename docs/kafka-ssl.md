@@ -29,7 +29,7 @@
    keytool -keystore server.keystore.jks -alias CARoot -import -file ca-cert
    keytool -keystore server.keystore.jks -alias hello_kafka -import -file cert-signed
    ```
-### kafka集成kafka
+### kafka集成ssl (服务端配置)
 1. 修改config/server.properties配置文件
    ```text
    listeners=PLAINTEXT://192.168.99.51:9092,SSL://192.168.99.51:8989
@@ -45,3 +45,16 @@
    ```text
    openssl s_client -debug -connect 192.168.99.51:8989 -tls1
    ```
+4. 打开防火墙端口
+   ```text
+   a. firewall-cmd --zone=public --add-port=8989/tcp --permanent
+   b. firewall-cmd --reload
+   ```
+### kafka客户端ssl配置
+1. 配置修改
+```text
+security.protocol=SSL
+ssl.endpoint.identification.algorithm=
+ssl.truststore.location=/root/tools/ca_temp/client.truststore.jks
+ssl.truststore.password=hello123
+```

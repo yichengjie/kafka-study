@@ -29,9 +29,9 @@
 12. 接收消息：```bin/kafka-console-consumer.sh --bootstrap-server 192.168.99.51:9092 --topic hello-topic --from-beginning```
 
 13. 打开防火墙端口
-
-    ```a. firewall-cmd --zone=public --add-port=3306/tcp --permanent ```
-
-    ```b. firewall-cmd --reload```
+    ```
+    a. firewall-cmd --zone=public --add-port=3306/tcp --permanent
+    b. firewall-cmd --reload
+    ```
 
     
