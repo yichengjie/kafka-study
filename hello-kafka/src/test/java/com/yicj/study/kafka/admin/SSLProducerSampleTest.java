@@ -17,20 +17,21 @@ public class SSLProducerSampleTest {
     @Test
     public void producer(){
         // 配置
-        Properties properties = new Properties() ;
-        properties.setProperty(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, CommonConstants.SSL_BOOTSTRAP_SERVER_ADDRESS) ;
-        properties.setProperty(ProducerConfig.ACKS_CONFIG, "all") ;
-        properties.setProperty(ProducerConfig.RETRIES_CONFIG, "0") ;
-        properties.setProperty(ProducerConfig.BATCH_SIZE_CONFIG, "16384") ;
-        properties.setProperty(ProducerConfig.LINGER_MS_CONFIG, "1") ;
-        properties.setProperty(ProducerConfig.BUFFER_MEMORY_CONFIG, "33554432") ;
-        properties.setProperty(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, "org.apache.kafka.common.serialization.StringSerializer") ;
-        properties.setProperty(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, "org.apache.kafka.common.serialization.StringSerializer") ;
-        // SSL
-        properties.setProperty("security.protocol", "SSL") ;
-        properties.setProperty("ssl.endpoint.identification.algorithm", "") ;
-        properties.setProperty("ssl.truststore.location", "client.truststore.jks") ;
-        properties.setProperty("ssl.truststore.password", "hello123") ;
+        Properties properties = new Properties();
+        properties.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG,"192.168.99.51:8989");
+        properties.put(ProducerConfig.ACKS_CONFIG,"all");
+        properties.put(ProducerConfig.RETRIES_CONFIG,"0");
+        properties.put(ProducerConfig.BATCH_SIZE_CONFIG,"16384");
+        properties.put(ProducerConfig.LINGER_MS_CONFIG,"1");
+        properties.put(ProducerConfig.BUFFER_MEMORY_CONFIG,"33554432");
+
+        properties.put("security.protocol","SSL");
+        properties.put("ssl.endpoint.identification.algorithm","");
+        properties.put("ssl.truststore.location","client.truststore.jks");
+        properties.put("ssl.truststore.password","hello123");
+
+        properties.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG,"org.apache.kafka.common.serialization.StringSerializer");
+        properties.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG,"org.apache.kafka.common.serialization.StringSerializer");
         // Producer 的主对象
         Producer<String, String> producer = new KafkaProducer<>(properties) ;
         // 消息对象
