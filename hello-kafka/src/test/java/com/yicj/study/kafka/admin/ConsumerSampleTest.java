@@ -21,6 +21,8 @@ public class ConsumerSampleTest {
         props.put(ConsumerConfig.GROUP_ID_CONFIG, "test1");
         props.put("enable.auto.commit", "true");
         props.put("auto.commit.interval.ms", "1000");
+        // 这个配置会将订阅者的offset置为0，这样会接受队列中所有的消息
+        // props.put(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, "earliest") ;
         props.put("key.deserializer", "org.apache.kafka.common.serialization.StringDeserializer");
         props.put("value.deserializer", "org.apache.kafka.common.serialization.StringDeserializer");
         KafkaConsumer<String, String> consumer = new KafkaConsumer<>(props);
@@ -28,10 +30,11 @@ public class ConsumerSampleTest {
         while (true) {
             ConsumerRecords<String, String> records = consumer.poll(Duration.ofMillis(10000));
             for (ConsumerRecord<String, String> record : records){
-                log.info("=========> partition: {},  offset = {}, key = {}, value = {}",
+                String format = String.format("=========> partition: %s,  offset = %s, key = %s, value = %s",
                         record.partition(), record.offset(), record.key(), record.value());
+                System.err.println(format);
             }
-            Thread.sleep(10000);
+            //Thread.sleep(10000);
         }
     }
 
@@ -69,7 +72,7 @@ public class ConsumerSampleTest {
                 // 从指定的partition中获取记录
                 List<ConsumerRecord<String, String>> partitionRecords = records.records(partition);
                 for (ConsumerRecord<String, String> partitionRecord: partitionRecords){
-                    log.info("=========> partition: {},  offset = {}, key = {}, value = {}",
+                    log.info("====================> partition: {},  offset = {}, key = {}, value = {}",
                             partitionRecord.partition(), partitionRecord.offset(), partitionRecord.key(), partitionRecord.value());
                 }
                 // 手动提交(获取最后一条消息的offset值)
