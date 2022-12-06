@@ -13,6 +13,7 @@
         <module>hello-kafka</module>
         <module>hello-zuul</module>
         <module>eureka-server</module>
+        <module>client-a</module>
     </modules>
 
     <parent>
