@@ -1,6 +1,10 @@
-package com.yicj.study.kafka;
+package com.yicj.study.kafka.utils;
 
-import java.io.File;
+import org.apache.tomcat.util.http.fileupload.IOUtils;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.Resource;
+
+import java.io.*;
 import java.util.Optional;
 
 public class CommonUtils {
@@ -18,7 +22,7 @@ public class CommonUtils {
             try {
                 tempFile.createNewFile();
             }catch (IOException e){
-                throw ICommonException.BUILDER.buildClient("5001","新建文件【"+tempPath+"】失败!") ;
+                throw new RuntimeException("新建文件【"+tempPath+"】失败!") ;
             }
         }
         Resource resource = new ClassPathResource(classPathFile);
@@ -27,7 +31,7 @@ public class CommonUtils {
             IOUtils.copy(inputStream, outputStream);
             return tempFile;
         }catch (IOException e){
-            throw ICommonException.BUILDER.buildClient("5002","复制的"+classPathFile+"文件不存在！") ;
+            throw new RuntimeException("复制的"+classPathFile+"文件不存在！") ;
         }
     }
 }

@@ -1,10 +1,12 @@
 package com.yicj.study.kafka.admin;
 
 import com.yicj.study.kafka.constants.CommonConstants;
+import com.yicj.study.kafka.utils.CommonUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.kafka.clients.producer.*;
 import org.junit.Test;
 
+import java.io.File;
 import java.util.Properties;
 import java.util.concurrent.Future;
 import java.util.stream.IntStream;
@@ -27,7 +29,9 @@ public class SSLProducerSampleTest {
 
         properties.put("security.protocol","SSL");
         properties.put("ssl.endpoint.identification.algorithm","");
-        properties.put("ssl.truststore.location","client.truststore.jks");
+        File file = CommonUtils.copyClassPathTempFile(
+                "client.truststore.jks", "client.truststore.jks");
+        properties.put("ssl.truststore.location",file.getPath());
         properties.put("ssl.truststore.password","hello123");
 
         properties.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG,"org.apache.kafka.common.serialization.StringSerializer");
