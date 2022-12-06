@@ -29,9 +29,11 @@ public class SSLProducerSampleTest {
 
         properties.put("security.protocol","SSL");
         properties.put("ssl.endpoint.identification.algorithm","");
-        File file = CommonUtils.copyClassPathTempFile(
-                "client.truststore.jks", "client.truststore.jks");
-        properties.put("ssl.truststore.location",file.getPath());
+        //File file = CommonUtils.copyClassPathTempFile(
+        //        "client.truststore.jks", "client.truststore.jks");
+        //properties.put("ssl.truststore.location",file.getPath());
+        //log.info("===========> path : {}", file.getPath());
+        properties.put("ssl.truststore.location","client.truststore.jks");
         properties.put("ssl.truststore.password","hello123");
 
         properties.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG,"org.apache.kafka.common.serialization.StringSerializer");
