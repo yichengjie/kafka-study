@@ -14,6 +14,8 @@ zuul:
     client-a:
       path: /client/**
       serviceId: client-a
+  # 这里注意需要设置敏感请求头，否则header无法透传
+  sensitive-headers:
 security:
   oauth2:
     client:
