@@ -23,4 +23,4 @@ security:
       client-secret: secret # oauth2 客户端密钥
     resource:
       jwt:
-        key-value: springcloud123 # 使用对称加密方式，默认算法HS256
+        key-value: spring_cloud123 # 使用对称加密方式，默认算法HS256
