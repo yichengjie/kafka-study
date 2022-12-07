@@ -14,8 +14,7 @@
         <module>hello-zuul</module>
         <module>eureka-server</module>
         <module>client-a</module>
-		<module>zuul-server</module>
-        <module>auth-server</module>
+        <module>hello-sso</module>
     </modules>
 
     <parent>
