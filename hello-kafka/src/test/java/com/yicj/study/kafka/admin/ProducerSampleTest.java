@@ -28,7 +28,7 @@ public class ProducerSampleTest {
         // Producer 的主对象
         Producer<String, String> producer = new KafkaProducer<>(properties) ;
         // 消息对象
-        IntStream.range(0, 100)
+        IntStream.range(0, 10)
                 .forEach(index -> {
                     String key = String.format("key-%s", (index + 1));
                     String value = String.format("hello world [%s]", (index + 1));

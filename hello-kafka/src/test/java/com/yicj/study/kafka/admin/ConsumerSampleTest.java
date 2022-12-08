@@ -18,11 +18,12 @@ public class ConsumerSampleTest {
     public void autoCommitConsumerTopic() throws InterruptedException {
         Properties props = new Properties();
         props.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, CommonConstants.BOOTSTRAP_SERVER_ADDRESS);
-        props.put(ConsumerConfig.GROUP_ID_CONFIG, "test1");
+        props.put(ConsumerConfig.GROUP_ID_CONFIG, "test10");
         props.put("enable.auto.commit", "true");
         props.put("auto.commit.interval.ms", "1000");
         // 这个配置会将订阅者的offset置为0，这样会接受队列中所有的消息
         // props.put(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, "earliest") ;
+        props.put(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, "latest") ;
         props.put("key.deserializer", "org.apache.kafka.common.serialization.StringDeserializer");
         props.put("value.deserializer", "org.apache.kafka.common.serialization.StringDeserializer");
         KafkaConsumer<String, String> consumer = new KafkaConsumer<>(props);
