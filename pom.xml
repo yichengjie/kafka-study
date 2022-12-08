@@ -15,6 +15,7 @@
         <module>eureka-server</module>
         <module>client-a</module>
         <module>hello-sso</module>
+        <module>hello-auth</module>
     </modules>
 
     <parent>
@@ -67,6 +68,12 @@
                 <groupId>org.apache.kafka</groupId>
                 <artifactId>kafka-streams</artifactId>
                 <version>2.4.0</version>
+            </dependency>
+
+            <dependency>
+                <groupId>io.jsonwebtoken</groupId>
+                <artifactId>jjwt</artifactId>
+                <version>0.9.1</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
