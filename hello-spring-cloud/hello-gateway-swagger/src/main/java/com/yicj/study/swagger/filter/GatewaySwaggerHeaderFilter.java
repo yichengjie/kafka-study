@@ -1,5 +1,6 @@
-package com.yicj.study.swagger.component;
+package com.yicj.study.swagger.filter;
 
+import com.yicj.study.swagger.config.GatewaySwaggerProvider;
 import org.springframework.cloud.gateway.filter.GatewayFilter;
 import org.springframework.cloud.gateway.filter.factory.AbstractGatewayFilterFactory;
 import org.springframework.http.server.reactive.ServerHttpRequest;

@@ -1,4 +1,4 @@
-package com.yicj.study.swagger.component;
+package com.yicj.study.swagger.config;
 
 import org.springframework.cloud.gateway.config.GatewayProperties;
 import org.springframework.cloud.gateway.handler.predicate.PredicateDefinition;
