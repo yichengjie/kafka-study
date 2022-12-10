@@ -15,7 +15,7 @@ spring:
           predicates:
             - Path=/admin/**
           filters:
-            - SwaggerHeaderFilter
+            - GatewaySwaggerHeaderFilter
             - StripPrefix=1
 
 eureka:
