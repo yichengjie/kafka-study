@@ -23,6 +23,7 @@
         <module>client-a</module>
         <module>hello-zuul</module>
         <module>hello-gateway</module>
+        <module>hello-gateway-https</module>
     </modules>
 
 </project>
