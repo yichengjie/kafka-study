@@ -1,9 +1,6 @@
 package com.yicj.study.client.controller;
 
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiImplicitParam;
-import io.swagger.annotations.ApiImplicitParams;
-import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.*;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -21,6 +18,7 @@ public class TestController {
         return  a + b ;
     }
 
+    @ApiOperation("test")
     @GetMapping("/test")
     public String prefixPath(){
 
