@@ -14,6 +14,7 @@
         <module>hello-sso</module>
         <module>hello-auth</module>
         <module>hello-spring-cloud</module>
+        <module>hello-webflux</module>
     </modules>
 
     <parent>
