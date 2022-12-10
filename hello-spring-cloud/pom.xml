@@ -26,6 +26,7 @@
         <module>hello-gateway-https</module>
         <module>hello-gateway-swagger</module>
         <module>client-b</module>
+        <module>hello-gateway-dynamic</module>
     </modules>
 
 </project>
