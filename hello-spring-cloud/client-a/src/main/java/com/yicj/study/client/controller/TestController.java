@@ -10,4 +10,10 @@ public class TestController {
     public Integer add(Integer a, Integer b){
         return  a + b ;
     }
+
+    @GetMapping("/test")
+    public String prefixPath(){
+
+        return "https to http" ;
+    }
 }
