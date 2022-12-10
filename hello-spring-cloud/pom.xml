@@ -25,6 +25,7 @@
         <module>hello-gateway</module>
         <module>hello-gateway-https</module>
         <module>hello-gateway-swagger</module>
+        <module>client-b</module>
     </modules>
 
 </project>
