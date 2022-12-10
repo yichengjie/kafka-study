@@ -1,5 +1,6 @@
 package com.yicj.study.swagger.config;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.cloud.gateway.config.GatewayProperties;
 import org.springframework.cloud.gateway.handler.predicate.PredicateDefinition;
 import org.springframework.cloud.gateway.route.RouteDefinition;
@@ -15,6 +16,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+@Slf4j
 @Primary
 @Component
 public class GatewaySwaggerProvider implements SwaggerResourcesProvider {
@@ -34,7 +36,10 @@ public class GatewaySwaggerProvider implements SwaggerResourcesProvider {
     public List<SwaggerResource> get() {
         List<String> routes = new ArrayList<>() ;
         // 取出Spring Cloud Gateway 中的route
-        routeLocator.getRoutes().subscribe(route -> routes.add(route.getId())) ;
+        routeLocator.getRoutes().subscribe(route -> {
+            //log.info("=======> route : {}", route);
+            routes.add(route.getId()) ;
+        }) ;
         //结合application.yml中路由配置，只获取有效的route节点
         return gatewayProperties.getRoutes()
                 .stream()
@@ -60,6 +65,7 @@ public class GatewaySwaggerProvider implements SwaggerResourcesProvider {
 
 
     private SwaggerResource swaggerResource(String name, String location){
+        // log.info("========> name : {}, location : {}", name, location);
         SwaggerResource swaggerResource = new SwaggerResource() ;
         swaggerResource.setName(name);
         swaggerResource.setLocation(location);
