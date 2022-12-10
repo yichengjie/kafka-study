@@ -16,10 +16,10 @@ import java.net.URISyntaxException;
  * 在LoadBalancerClientFilter执行前将https转为http
  * {@link LoadBalancerClientFilter}
  */
-@Component
+//@Component
 public class Https2HttpFilter implements GlobalFilter, Ordered {
 
-    private static final int HTTPS_TO_HTTP_FILTER_ORDER = LoadBalancerClientFilter.LOAD_BALANCER_CLIENT_FILTER_ORDER -1 ;
+    private static final int HTTPS_TO_HTTP_FILTER_ORDER = 10099 ;
 
     @Override
     public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) {
