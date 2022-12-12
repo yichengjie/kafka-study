@@ -27,6 +27,8 @@
         <module>hello-gateway-swagger</module>
         <module>client-b</module>
         <module>hello-gateway-dynamic</module>
+        <module>hello-config-server</module>
+        <module>hello-config-client</module>
     </modules>
 
 </project>
