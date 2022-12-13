@@ -3,6 +3,8 @@ package com.yicj.study.client.controller;
 import io.swagger.annotations.*;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.context.request.RequestAttributes;
+import org.springframework.web.context.request.RequestContextHolder;
 
 @Api("测试集成Swagger")
 @RestController
@@ -21,7 +23,7 @@ public class TestController {
     @ApiOperation("test")
     @GetMapping("/test")
     public String prefixPath(){
-
+        RequestAttributes attributes = RequestContextHolder.currentRequestAttributes();
         return "https to http" ;
     }
 }
