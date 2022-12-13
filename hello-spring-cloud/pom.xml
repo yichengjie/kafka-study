@@ -31,6 +31,7 @@
         <module>hello-config-client</module>
         <module>hello-config-client-jwt</module>
         <module>hello-config-client-auth-jwt</module>
+        <module>hello-config-server-auth-jwt</module>
     </modules>
 
 </project>
