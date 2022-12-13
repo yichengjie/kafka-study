@@ -29,6 +29,8 @@
         <module>hello-gateway-dynamic</module>
         <module>hello-config-server</module>
         <module>hello-config-client</module>
+        <module>hello-config-client-jwt</module>
+        <module>hello-config-client-auth-jwt</module>
     </modules>
 
 </project>
