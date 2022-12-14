@@ -1,4 +1,4 @@
-package com.yicj.config.jwt.model;
+package com.yicj.config.security.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

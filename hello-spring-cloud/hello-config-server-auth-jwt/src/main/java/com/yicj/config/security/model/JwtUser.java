@@ -1,4 +1,4 @@
-package com.yicj.config.jwt.model;
+package com.yicj.config.security.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Setter;
