@@ -7,5 +7,9 @@ spring:
           search-paths: SC-BOOK-CONFIG
   application:
     name: hello-git-server
+  security:
+    user:
+      name: root
+      password: 123
 server:
   port: 9090

@@ -1,4 +1,4 @@
-package com.yicj.config.security.model;
+package com.yicj.study.config.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Setter;

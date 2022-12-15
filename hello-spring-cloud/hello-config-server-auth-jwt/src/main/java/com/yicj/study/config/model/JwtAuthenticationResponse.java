@@ -1,4 +1,4 @@
-package com.yicj.config.security.model;
+package com.yicj.study.config.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
