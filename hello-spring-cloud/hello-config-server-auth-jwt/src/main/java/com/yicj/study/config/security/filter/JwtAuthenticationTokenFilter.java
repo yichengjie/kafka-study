@@ -31,10 +31,10 @@ public class JwtAuthenticationTokenFilter extends GenericFilterBean {
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
         HttpServletRequest httpRequest = (HttpServletRequest) request ;
         String authToken = httpRequest.getHeader(tokenHeader);
-        String username = jwtTokenUtil.getUsernameFromToken(authToken);
-        if (username != null && SecurityContextHolder.getContext().getAuthentication() == null){
+        if (authToken!= null && SecurityContextHolder.getContext().getAuthentication() == null){
+            String username = jwtTokenUtil.getUsernameFromToken(authToken);
             UserDetails userDetails = this.userDetailsService.loadUserByUsername(username);
-            if (jwtTokenUtil.validateToken(authToken, userDetails)){
+            if (username != null && jwtTokenUtil.validateToken(authToken, userDetails)){
                 UsernamePasswordAuthenticationToken auth = new UsernamePasswordAuthenticationToken(
                         username,null, userDetails.getAuthorities()
                 ) ;

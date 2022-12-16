@@ -7,6 +7,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -17,6 +18,7 @@ import java.util.List;
 public class MemberServiceImpl implements UserDetailsService {
 
     private static final PasswordEncoder BCRYPT = new BCryptPasswordEncoder() ;
+    //private static final PasswordEncoder BCRYPT = NoOpPasswordEncoder.getInstance() ;
 
     @Value("${spring.security.user.name}")
     private String hardcodeUser ;
