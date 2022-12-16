@@ -1,5 +1,5 @@
 
-package com.yicj.study.config.initializer;
+package com.yicj.study.config.component;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
