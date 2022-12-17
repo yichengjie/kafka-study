@@ -33,6 +33,7 @@
         <module>hello-config-client-auth-jwt</module>
         <module>hello-config-server-auth-jwt</module>
         <module>hello-config-client-bak-autoconfig</module>
+        <module>hello-nacos-client</module>
     </modules>
 
 </project>
