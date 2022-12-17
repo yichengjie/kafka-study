@@ -52,9 +52,9 @@
    ```
 ### kafka客户端ssl配置
 1. 配置修改
-```text
-security.protocol=SSL
-ssl.endpoint.identification.algorithm=
-ssl.truststore.location=/root/tools/ca_temp/client.truststore.jks
-ssl.truststore.password=hello123
-```
+   ```text
+   security.protocol=SSL
+   ssl.endpoint.identification.algorithm=
+   ssl.truststore.location=/root/tools/ca_temp/client.truststore.jks
+   ssl.truststore.password=hello123
+   ```
