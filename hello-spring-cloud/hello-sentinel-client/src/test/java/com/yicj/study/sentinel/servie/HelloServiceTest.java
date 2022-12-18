@@ -15,7 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = SentinelClientApplication.class)
+@SpringBootTest(classes = SentinelClientApplication.class, properties = {})
 public class HelloServiceTest {
 
     @Autowired
