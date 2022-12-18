@@ -1,11 +1,9 @@
 spring:
-  profiles:
-    active: dev
   application:
     name: example
   cloud:
     nacos:
       config:
         server-addr: 192.168.99.51:8848
-        prefix: example
+        # prefix: example
         file-extension: yaml
