@@ -1,8 +1,4 @@
 spring:
-  profiles:
-    active: tst
-  application:
-    name: example
   cloud:
     nacos:
       config:
