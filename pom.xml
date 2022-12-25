@@ -15,6 +15,7 @@
         <module>hello-auth</module>
         <module>hello-spring-cloud</module>
         <module>hello-webflux</module>
+        <module>hello-mvc</module>
     </modules>
 
     <parent>
