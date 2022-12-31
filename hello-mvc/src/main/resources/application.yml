@@ -4,3 +4,7 @@ server:
 spring:
   main:
     banner-mode: off
+
+admin:
+  name: 张三
+  age: 18
