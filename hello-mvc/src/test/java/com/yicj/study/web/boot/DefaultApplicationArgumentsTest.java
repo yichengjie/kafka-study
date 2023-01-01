@@ -40,17 +40,13 @@ public class DefaultApplicationArgumentsTest{
     @Test
     public void getNonOptionArgs(){
         //String [] args = {"--foo=bar", "--debug=true", "-Dname=张三"} ;
-        String[] args = {"--a", "--b=bb","--c=a,b,c","--c=d", "-Dc=true"};
+        String[] args = {"--a", "--b=bb","--c=a,b,c","--c=d", "name=true"};
         ApplicationArguments springApplicationArguments = new DefaultApplicationArguments(args) ;
         List<String> nonOptionArgs = springApplicationArguments.getNonOptionArgs();
-        Consumer<String> consumer = name ->
-                log.info("name : {} <---> value : {}", name, springApplicationArguments.getOptionValues(name)) ;
-        nonOptionArgs.forEach(consumer);
-
         log.info("---> {}", nonOptionArgs);
+//        SimpleCommandLinePropertySource ps = new SimpleCommandLinePropertySource(args);
+//        log.info(ps.getProperty("b"));
+//        log.info(ps.getProperty("c"));
 
-        SimpleCommandLinePropertySource ps = new SimpleCommandLinePropertySource(args);
-        log.info(ps.getProperty("b"));
-        log.info(ps.getProperty("c"));
     }
 }
