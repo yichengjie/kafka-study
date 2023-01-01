@@ -4,6 +4,8 @@ server:
 spring:
   main:
     banner-mode: off
+  profiles:
+    active: prod
 
 admin:
   name: 张三
