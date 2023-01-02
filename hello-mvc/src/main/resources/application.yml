@@ -10,3 +10,8 @@ spring:
 admin:
   name: 张三
   age: 18
+
+logging:
+  level:
+    root: info
+    com.yicj.study.mvc: debug
