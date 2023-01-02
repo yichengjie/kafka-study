@@ -1,8 +1,11 @@
 package com.yicj.study.mvc.config;
 
 
+import com.yicj.study.mvc.service.HelloService;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.ObjectProvider;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 
 /**
@@ -16,6 +19,9 @@ import org.springframework.beans.factory.annotation.Value;
 @Slf4j
 @Data
 public class WithoutAnnotationConfiguration {
+
+    @Autowired
+    private ObjectProvider<HelloService> objectProvider ;
 
     @Value("${admin.name}")
     private String name ;
