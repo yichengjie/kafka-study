@@ -12,11 +12,8 @@ import java.util.Set;
 
 @Slf4j
 //@EnableWebMvc
-@ConditionalOnWebApplication
 @SpringBootApplication
 public class HelloMvcApplication {
-
-
 
     public static void main(String[] args) {
         SpringApplication application = new SpringApplication(HelloMvcApplication.class);

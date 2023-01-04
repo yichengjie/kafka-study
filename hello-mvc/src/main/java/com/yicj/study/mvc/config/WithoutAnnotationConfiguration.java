@@ -7,6 +7,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.ObjectProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnWebApplication;
 
 /**
  * SpringApplication application = new SpringApplication(HelloMvcApplication.class);
@@ -18,6 +20,8 @@ import org.springframework.beans.factory.annotation.Value;
  */
 @Slf4j
 @Data
+@ConditionalOnWebApplication
+//@ConditionalOnBean
 public class WithoutAnnotationConfiguration {
 
     @Autowired
