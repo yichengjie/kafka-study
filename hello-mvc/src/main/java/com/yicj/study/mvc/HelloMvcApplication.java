@@ -28,7 +28,8 @@ public class HelloMvcApplication {
         bean.getObjectProvider()
                 .orderedStream()
                 .forEach(HelloService::hello);
-
+        HelloService helloService = context.getBean(HelloService.class);
+        helloService.hello();
     }
 
 }
