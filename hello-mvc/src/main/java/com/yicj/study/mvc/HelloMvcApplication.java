@@ -7,11 +7,13 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnWebApplication;
 import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+
 import java.util.HashSet;
 import java.util.Set;
 
 @Slf4j
-//@EnableWebMvc
+@EnableWebMvc
 @SpringBootApplication
 public class HelloMvcApplication {
 
