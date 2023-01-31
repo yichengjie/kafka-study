@@ -16,6 +16,7 @@
         <module>hello-spring-cloud</module>
         <module>hello-webflux</module>
         <module>hello-mvc</module>
+        <module>hello-cache</module>
     </modules>
 
     <parent>
