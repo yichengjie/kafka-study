@@ -17,6 +17,7 @@
         <module>hello-webflux</module>
         <module>hello-mvc</module>
         <module>hello-cache</module>
+        <module>hello-mybatis</module>
     </modules>
 
     <parent>
