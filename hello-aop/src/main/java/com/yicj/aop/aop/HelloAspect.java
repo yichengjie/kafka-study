@@ -27,14 +27,15 @@ public class HelloAspect {
     }
 
     @Around("testPointcut()")
-    public void aroundAdvice(ProceedingJoinPoint proceedingJoinPoint) {
+    public Object aroundAdvice(ProceedingJoinPoint proceedingJoinPoint) {
         log.info("==========> aroundAdvice before");
         try {
-            proceedingJoinPoint.proceed();
+            return proceedingJoinPoint.proceed();
         } catch (Throwable t) {
-            t.printStackTrace();
+            log.error("error : ", t);
         }
         log.info("==========> aroundAdvice after");
+        return null ;
     }
 
 }
