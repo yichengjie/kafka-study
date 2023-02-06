@@ -18,6 +18,7 @@
         <module>hello-mvc</module>
         <module>hello-cache</module>
         <module>hello-mybatis</module>
+        <module>hello-aop</module>
     </modules>
 
     <parent>
