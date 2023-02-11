@@ -1,6 +1,7 @@
 package com.yicj.jdbc;
 
 import lombok.extern.slf4j.Slf4j;
+import org.mybatis.spring.mapper.MapperFactoryBean;
 import org.springframework.beans.factory.support.DefaultListableBeanFactory;
 import org.springframework.beans.factory.xml.XmlBeanFactory;
 import org.springframework.boot.SpringApplication;
@@ -26,6 +27,8 @@ public class MybatisApplication {
         DefaultListableBeanFactory beanFactory = new DefaultListableBeanFactory() ;
         Resource resource = new ClassPathResource("bean.xml") ;
         XmlBeanFactory xmlBeanFactory = new XmlBeanFactory(resource) ;
+
+        MapperFactoryBean bean = new MapperFactoryBean() ;
 
         new ClassPathXmlApplicationContext("bean.xml") ;
     }
