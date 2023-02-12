@@ -5,7 +5,11 @@ spring:
   main:
     banner-mode: off
   profiles:
-    active: prod
+    active: dev
+#  mvc:
+#    view:
+#      prefix: pages
+#      suffix: .html
 
 admin:
   name: 张三

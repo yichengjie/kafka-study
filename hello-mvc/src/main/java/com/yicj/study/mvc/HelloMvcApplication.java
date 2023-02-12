@@ -14,7 +14,6 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Slf4j
-@EnableWebMvc
 @SpringBootApplication
 public class HelloMvcApplication {
 
