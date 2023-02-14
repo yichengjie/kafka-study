@@ -38,7 +38,6 @@ public class HelloMvcApplication {
 
         AppConfig appConfig = context.getBean(AppConfig.class);
         log.info("app config : {}", appConfig);
-
         BeanFactoryAware aware = (BeanFactoryAware) appConfig ;
         aware.setBeanFactory(null);
     }
