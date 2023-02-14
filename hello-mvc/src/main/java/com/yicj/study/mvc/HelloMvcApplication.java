@@ -1,8 +1,11 @@
 package com.yicj.study.mvc;
 
+import com.yicj.study.mvc.config.AppConfig;
 import com.yicj.study.mvc.config.WithoutAnnotationConfiguration;
 import com.yicj.study.mvc.service.HelloService;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.naming.factory.BeanFactory;
+import org.springframework.beans.factory.BeanFactoryAware;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnWebApplication;
@@ -32,6 +35,12 @@ public class HelloMvcApplication {
                 .forEach(HelloService::hello);
         HelloService helloService = context.getBean(HelloService.class);
         helloService.hello();
+
+        AppConfig appConfig = context.getBean(AppConfig.class);
+        log.info("app config : {}", appConfig);
+
+        BeanFactoryAware aware = (BeanFactoryAware) appConfig ;
+        aware.setBeanFactory(null);
     }
 
 }
