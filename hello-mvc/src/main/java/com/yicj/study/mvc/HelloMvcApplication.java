@@ -12,6 +12,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnWebApplication;
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.context.annotation.ImportResource;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 import java.util.HashSet;
@@ -19,6 +20,7 @@ import java.util.Set;
 
 @Slf4j
 @SpringBootApplication
+@ImportResource("classpath:beans.xml")
 public class HelloMvcApplication {
 
     public static void main(String[] args) {
@@ -29,22 +31,20 @@ public class HelloMvcApplication {
         application.setSources(sources);
         //
         ConfigurableApplicationContext context = application.run(args);
-        WithoutAnnotationConfiguration bean = context.getBean(WithoutAnnotationConfiguration.class);
-        log.info("bean : {}", bean);
-        bean.getObjectProvider()
-                .orderedStream()
-                .forEach(HelloService::hello);
         HelloService helloService = context.getBean(HelloService.class);
         helloService.hello();
+
+        // ObjectProvider test
+//        WithoutAnnotationConfiguration bean = context.getBean(WithoutAnnotationConfiguration.class);
+//        log.info("bean : {}", bean);
+//        bean.getObjectProvider()
+//                .orderedStream()
+//                .forEach(HelloService::hello);
 
         AppConfig appConfig = context.getBean(AppConfig.class);
         log.info("app config : {}", appConfig);
         BeanFactoryAware aware = (BeanFactoryAware) appConfig ;
         aware.setBeanFactory(null);
-//        new HelloMvcApplication().test("张三", name -> {
-//            System.out.println("hello " + name);
-//            return "hello " + name ;
-//        });
     }
 
 

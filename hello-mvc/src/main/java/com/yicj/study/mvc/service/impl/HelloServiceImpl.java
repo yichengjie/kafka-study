@@ -18,9 +18,9 @@ public class HelloServiceImpl implements HelloService {
     @Value("${admin.age}")
     private Integer age ;
 
-    @Lookup
     @Override
-    public void hello() {
+    public String hello() {
         log.info("---> hello impl ...");
+        return "hello " ;
     }
 }
