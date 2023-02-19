@@ -4,23 +4,17 @@ import com.yicj.study.mvc.config.AppConfig;
 import com.yicj.study.mvc.config.WithoutAnnotationConfiguration;
 import com.yicj.study.mvc.service.HelloService;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.naming.factory.BeanFactory;
 import org.springframework.beans.factory.BeanFactoryAware;
-import org.springframework.beans.factory.xml.XmlBeanFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnWebApplication;
-import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.ImportResource;
-import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 import java.util.HashSet;
 import java.util.Set;
 
 @Slf4j
 @SpringBootApplication
-@ImportResource("classpath:beans.xml")
 public class HelloMvcApplication {
 
     public static void main(String[] args) {

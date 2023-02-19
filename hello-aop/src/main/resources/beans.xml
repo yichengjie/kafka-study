@@ -3,9 +3,9 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <bean id="helloService" class="com.yicj.study.mvc.service.impl.HelloServiceImpl">
+    <bean id="helloService" class="com.yicj.aop.service.impl.HelloServiceImpl">
         <replaced-method name="hello" replacer="helloMethodReplacer" />
     </bean>
 
-    <bean id="helloMethodReplacer"  class="com.yicj.study.mvc.methodreplacer.HelloMethodReplacer" />
+    <bean id="helloMethodReplacer"  class="com.yicj.aop.methodreplacer.HelloMethodReplacer" />
 </beans>

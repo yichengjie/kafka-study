@@ -1,4 +1,4 @@
-package com.yicj.study.mvc.methodreplacer;
+package com.yicj.aop.methodreplacer;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.support.MethodReplacer;
