@@ -41,6 +41,21 @@ public class HelloMvcApplication {
         log.info("app config : {}", appConfig);
         BeanFactoryAware aware = (BeanFactoryAware) appConfig ;
         aware.setBeanFactory(null);
+//        new HelloMvcApplication().test("张三", name -> {
+//            System.out.println("hello " + name);
+//            return "hello " + name ;
+//        });
+    }
+
+
+    public void test(String name, Hello hello){
+        hello.hello(name) ;
+    }
+
+
+    interface Hello{
+
+        String hello(String name) ;
     }
 
 }
