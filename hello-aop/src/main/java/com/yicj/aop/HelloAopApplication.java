@@ -7,8 +7,10 @@ import org.springframework.boot.autoconfigure.AutoConfigurationPackages;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.ImportResource;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 @Slf4j
+@EnableWebMvc
 @SpringBootApplication
 @ImportResource("classpath:beans.xml")
 public class HelloAopApplication {
