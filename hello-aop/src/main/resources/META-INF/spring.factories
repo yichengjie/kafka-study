@@ -1,3 +1,5 @@
 com.yicj.aop.beans.spi.DemoDao=\
   com.yicj.aop.beans.spi.DemoMySqlDao,\
   com.yicj.aop.beans.spi.DemoOracleDaoImpl
+org.springframework.boot.SpringApplicationRunListener=\
+  com.yicj.aop.runlistener.HelloRunnerListener

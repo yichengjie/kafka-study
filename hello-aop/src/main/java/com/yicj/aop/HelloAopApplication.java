@@ -1,5 +1,6 @@
 package com.yicj.aop;
 
+import com.yicj.aop.runlistener.HelloRunnerListener;
 import com.yicj.aop.service.HelloServiceManager;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.config.BeanFactoryPostProcessor;
@@ -23,7 +24,10 @@ public class HelloAopApplication {
     private static final String BEAN = AutoConfigurationPackages.class.getName();
 
     public static void main(String[] args) {
-        ConfigurableApplicationContext context = SpringApplication.run(HelloAopApplication.class, args);
+        SpringApplication application = new SpringApplication(HelloAopApplication.class);
+        application.setMainApplicationClass(HelloAopApplication.class);
+        //ConfigurableApplicationContext context = SpringApplication.run(HelloAopApplication.class, args);
+        ConfigurableApplicationContext context = application.run(args) ;
         HelloServiceManager manager = context.getBean(HelloServiceManager.class);
         manager.hello();
 
