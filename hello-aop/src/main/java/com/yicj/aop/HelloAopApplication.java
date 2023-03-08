@@ -1,5 +1,6 @@
 package com.yicj.aop;
 
+import com.yicj.aop.importselector.WaiterDeferredImportSelector;
 import com.yicj.aop.runlistener.HelloRunnerListener;
 import com.yicj.aop.service.HelloServiceManager;
 import lombok.extern.slf4j.Slf4j;
@@ -10,6 +11,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.AutoConfigurationPackages;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.context.annotation.Import;
 import org.springframework.context.annotation.ImportResource;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
@@ -18,6 +20,7 @@ import java.util.Arrays;
 @Slf4j
 @EnableWebMvc
 @SpringBootApplication
+@Import(WaiterDeferredImportSelector.class)
 @ImportResource("classpath:beans.xml")
 public class HelloAopApplication {
 

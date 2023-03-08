@@ -3,6 +3,7 @@ package com.yicj.aop.importselector;
 import com.yicj.aop.beans.Waiter;
 import org.springframework.context.annotation.DeferredImportSelector;
 import org.springframework.core.type.AnnotationMetadata;
+import org.springframework.stereotype.Component;
 
 public class WaiterDeferredImportSelector implements DeferredImportSelector {
 

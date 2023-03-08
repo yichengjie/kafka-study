@@ -13,7 +13,7 @@ import java.lang.annotation.*;
 @Import({Boss.class,
         BarImportSelector.class,
         WaiterRegistrar.class,
-        WaiterDeferredImportSelector.class,
+//        WaiterDeferredImportSelector.class,
         BartenderConfiguration.class})
 @Documented
 @Retention(RetentionPolicy.RUNTIME)
