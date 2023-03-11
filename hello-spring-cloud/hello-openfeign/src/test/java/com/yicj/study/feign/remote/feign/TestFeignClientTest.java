@@ -2,12 +2,18 @@ package com.yicj.study.feign.remote.feign;
 
 import com.yicj.study.feign.BaseJunitTest;
 import com.yicj.study.feign.model.UserInfoVO;
+import com.yicj.study.feign.utils.GzipUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 
+import java.io.BufferedReader;
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
+import java.util.zip.GZIPInputStream;
 
 @Slf4j
 public class TestFeignClientTest extends BaseJunitTest {
@@ -42,12 +48,13 @@ public class TestFeignClientTest extends BaseJunitTest {
     }
 
     @Test
-    public void userInfoCompress(){
+    public void userInfoCompress() throws IOException {
         String username = "张三" ;
         String address = "北京" ;
         ResponseEntity<byte[]> responseEntity = testFeignClient.userInfoCompress(username, address);
-        byte[] body = responseEntity.getBody();
-        String value = new String(body) ;
-        log.info("value : {}", value);
+        byte[] compressed = responseEntity.getBody();
+        String decompressValue = GzipUtils.decompress(compressed);
+        log.info("value : {}", decompressValue);
     }
+
 }

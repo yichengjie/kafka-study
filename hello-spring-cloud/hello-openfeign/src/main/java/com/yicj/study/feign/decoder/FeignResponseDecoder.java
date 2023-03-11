@@ -1,5 +1,6 @@
 package com.yicj.study.feign.decoder;
 
+import com.yicj.study.feign.utils.GzipUtils;
 import feign.Response;
 import feign.Util;
 import feign.codec.Decoder;
@@ -35,15 +36,9 @@ public class FeignResponseDecoder implements Decoder {
             //after decompress we are delegating the decompressed response to default
             //decoder
             if (isCompressed(compressed)) {
-                final StringBuilder output = new StringBuilder();
-                final GZIPInputStream gis = new GZIPInputStream(new ByteArrayInputStream(compressed));
-                final BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(gis, StandardCharsets.UTF_8));
-                String line;
-                while ((line = bufferedReader.readLine()) != null) {
-                    output.append(line);
-                }
-                Response uncompressedResponse = response.toBuilder().body(output.toString().getBytes()).build();
-                return delegate.decode(uncompressedResponse, type);
+                String decompressValue = GzipUtils.decompress(compressed);
+                Response decompressedResponse = response.toBuilder().body(decompressValue.getBytes()).build();
+                return delegate.decode(decompressedResponse, type);
             } else {
                 return delegate.decode(response, type);
             }
