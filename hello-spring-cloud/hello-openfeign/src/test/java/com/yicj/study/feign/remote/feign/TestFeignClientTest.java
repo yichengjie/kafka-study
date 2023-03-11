@@ -7,13 +7,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-
-import java.io.BufferedReader;
-import java.io.ByteArrayInputStream;
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.nio.charset.StandardCharsets;
-import java.util.zip.GZIPInputStream;
 
 @Slf4j
 public class TestFeignClientTest extends BaseJunitTest {
@@ -30,12 +24,13 @@ public class TestFeignClientTest extends BaseJunitTest {
     }
 
     @Test
-    public void addCompress(){
+    public void addCompress() throws IOException {
         Integer a = 1 ;
         Integer b = 2 ;
         ResponseEntity<byte[]> responseEntity = testFeignClient.addCompress(a, b);
         byte[] body = responseEntity.getBody();
-        String value = new String(body, StandardCharsets.UTF_8) ;
+        //String value = new String(body, StandardCharsets.UTF_8) ;
+        String value = GzipUtils.decompress(body);
         log.info("value : {}", value);
     }
 
