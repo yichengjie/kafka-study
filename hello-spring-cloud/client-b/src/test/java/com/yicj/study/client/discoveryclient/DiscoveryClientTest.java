@@ -1,4 +1,4 @@
-package com.yicj.study.client.utils;
+package com.yicj.study.client.discoveryclient;
 
 import com.yicj.study.client.BaseJunitTest;
 import lombok.extern.slf4j.Slf4j;
@@ -21,5 +21,8 @@ public class DiscoveryClientTest extends BaseJunitTest {
         List<ServiceInstance> list = discoveryClient.getInstances(serviceId);
         log.info("instance size : {}", list.size());
         list.forEach(instance -> log.info("instance : host : {}, port : {}", instance.getHost(), instance.getPort()));
+
+        List<String> services = discoveryClient.getServices();
+        services.forEach(System.out::println);
     }
 }
