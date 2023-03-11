@@ -35,6 +35,7 @@
         <module>hello-config-client-bak-autoconfig</module>
         <module>hello-nacos-client</module>
         <module>hello-sentinel-client</module>
+        <module>hello-openfeign</module>
     </modules>
 
 </project>

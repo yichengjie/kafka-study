@@ -1,5 +1,6 @@
 package com.yicj.study.client.controller;
 
+import com.yicj.study.client.model.UserInfoVO;
 import io.swagger.annotations.*;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -25,5 +26,10 @@ public class TestController {
     public String prefixPath(){
         RequestAttributes attributes = RequestContextHolder.currentRequestAttributes();
         return "https to http" ;
+    }
+
+    @GetMapping("/userInfo")
+    public UserInfoVO userInfo(String username, String address){
+        return new UserInfoVO(username, address) ;
     }
 }
