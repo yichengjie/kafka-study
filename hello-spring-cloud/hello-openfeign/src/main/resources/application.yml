@@ -19,6 +19,16 @@ feign:
     response:
       enabled: true # 配置相应GZIP压缩
 
+  client:
+    config:
+      #client-b:
+      default:
+        connectTimeout: 500000 # 连接超时时间
+        readTimeout: 500000 # 读超时时间
+        loggerLevel: full #配置Feign的日志级别
+  httpclient:
+    connection-timeout: 500000
+
 logging:
   level:
     root: info
