@@ -11,9 +11,6 @@
     <modules>
         <module>hello-world</module>
         <module>hello-kafka</module>
-        <module>hello-sso</module>
-        <module>hello-auth</module>
-        <module>hello-spring-cloud</module>
         <module>hello-webflux</module>
         <module>hello-mvc</module>
         <module>hello-cache</module>
