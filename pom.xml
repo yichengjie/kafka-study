@@ -16,6 +16,7 @@
         <module>hello-cache</module>
         <module>hello-mybatis</module>
         <module>hello-aop</module>
+        <module>hello-spring-boot-kafka</module>
     </modules>
 
     <parent>
