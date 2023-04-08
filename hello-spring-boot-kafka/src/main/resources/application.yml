@@ -1,3 +1,14 @@
 spring:
   application:
     name: hello-spring-kafka
+hdk:
+  kafka:
+    bootstrap-servers: 192.168.99.51:9092
+    producer:
+      username: test
+      password: test
+    consumer:
+      username: test
+      password: test
+      group-id: hello-kafka
+

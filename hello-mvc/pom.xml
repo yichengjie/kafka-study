@@ -50,6 +50,11 @@
             <artifactId>hdk-access-log</artifactId>
         </dependency>
 
+        <dependency>
+            <groupId>com.yicj.hdk</groupId>
+            <artifactId>hdk-swagger-ui</artifactId>
+        </dependency>
+
     </dependencies>
 
     <build>
