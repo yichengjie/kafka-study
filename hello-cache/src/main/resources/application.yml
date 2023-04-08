@@ -1,3 +1,10 @@
 spring:
+  application:
+    name: hello-cache
+# cache配置
+hdk:
   cache:
-    type: redis
+    caffeine:
+      configs:
+        - name: common
+          timeout: 2
