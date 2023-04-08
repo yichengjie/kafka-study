@@ -55,6 +55,11 @@
             <artifactId>hdk-swagger-ui</artifactId>
         </dependency>
 
+        <dependency>
+            <groupId>com.yicj.hdk</groupId>
+            <artifactId>hdk-threadpool</artifactId>
+        </dependency>
+
     </dependencies>
 
     <build>

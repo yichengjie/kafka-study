@@ -3,6 +3,7 @@ package com.yicj.study.mvc;
 import com.yicj.hdk.accesslog.EnableHdkAccessLog;
 import com.yicj.hdk.accesslog.HdkAccessLogType;
 import com.yicj.hdk.swagger.EnableHdkSwagger;
+import com.yicj.hdk.threadpool.EnableHdkThreadPool;
 import com.yicj.study.mvc.config.AppConfig;
 import com.yicj.study.mvc.config.WithoutAnnotationConfiguration;
 import com.yicj.study.mvc.service.HelloService;
@@ -19,6 +20,7 @@ import java.util.Set;
 
 @Slf4j
 @SpringBootApplication
+@EnableHdkThreadPool
 @EnableHdkSwagger(value = "com.yicj.study.mvc.controller", activeProfiles = "dev")
 @EnableHdkAccessLog(value = "com.yicj.study.mvc.controller", type = HdkAccessLogType.ALL)
 public class HelloMvcApplication {
