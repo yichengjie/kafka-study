@@ -1,0 +1,15 @@
+hdk:
+  kafka:
+    bootstrap-servers: 192.168.99.51:8989
+    security-protocol: SSL
+    ssl-truststore:
+      location: client.truststore.jks
+      password: hello123
+    producer:
+      enable: true
+    consumer:
+      group-id: hello-kafka
+    topic:
+      helloTopic: hello-topic
+
+

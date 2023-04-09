@@ -1,12 +1,6 @@
 spring:
   application:
     name: hello-spring-kafka
-hdk:
-  kafka:
-    bootstrap-servers: 192.168.99.51:9092
-    security-protocol: PLAINTEXT
-    consumer:
-      group-id: hello-kafka
-    topic:
-      helloTopic: hello-topic
+  profiles:
+    active: tst
 
